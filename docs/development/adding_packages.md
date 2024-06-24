@@ -10,7 +10,7 @@ The recipe format is described in the [rattler-build recipe format](https://gith
 Adding cmake based packages is easy. Usually it is enough to replace the `cmake` command with the `emcmake` command and
 `make` with `emmake` (see the [emscripten documentation](https://emscripten.org/docs/compiling/Building-Projects.html#integrating-with-a-build-system) for more details).
 
-To build a shared library with CMake, one needs  flags.
+To build a shared library with CMake, one needs additional flags.
 These flags can be put into a `.cmake` file:
 ```CMake
 # overwriteProp.cmake
@@ -20,7 +20,7 @@ set(CMAKE_SHARED_LIBRARY_CREATE_CXX_FLAGS "-s SIDE_MODULE=1")
 set(CMAKE_STRIP FALSE)  # used by default in pybind11 on .so modules # only for needed when using pybind11
 ```
 
-This can be passed to the as command line argument to cmake
+This can be passed to make as command line argument: 
 ```
 # CLI
 ... -DCMAKE_PROJECT_INCLUDE=overwriteProp.cmake
